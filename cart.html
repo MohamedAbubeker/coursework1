@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
     <title>Vue app</title>
 </head>
 <body>
     <div id="App">
-        <div class="main-content-caret">
+        <div class="main-content-cart">
             <div>
                 <a href="./index.html"><h1>Home</h1></a>
             </div>
             <div class="lessons">
-                <div v-for="lesson in caret" :key="lesson.id" class="lesson">
+                <div v-for="lesson in cart" :key="lesson.id" class="lesson border border-primary rounded">
                     <div class="lesson-content">
                         <h2>Subject: {{ lesson.subject }}</h2>
                         <h2>Loacation: {{ lesson.location }}</h2>
                         <h2>Price: <i class="fas fa-pound-sign"></i> {{ lesson.price }}</h2>
-                        <button type="button" @click="removeLessonFromCaret(lesson)">Remove</button>
+                        <button type="button" @click="removeLessonFromcart(lesson)">Remove</button>
                     </div>
                     <div class="lesson-img">
                         <img :src="lesson.img" :alt="lesson.subject">
@@ -45,6 +46,8 @@
 
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./jquery-1.12.4.min.js"></script>
+    <script src="./bootstrap.min.css"></script>
     <script src="./javascript.js"></script>
 </body>
 </html>
