@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Vue app</title>
+</head>
+<body>
+    <div id="App">
+        
+        <div class="main-content-home">
+            <div class="sidebar">
+                <h1>Sort by:</h2>
+                <div>
+                    <input v-if="sortBy.includes('subject')" type="radio" id="subject" name="sortby" value="subject" @change="onSortChange('subject')" checked>
+                    <input v-else type="radio" id="subject" name="sortby" value="subject" @change="onSortChange('subject')">
+                    <label for="subject">Subject</label><br>
+                    <input v-if="sortBy.includes('location')" type="radio" id="location" name="sortby" value="location" @change="onSortChange('location')" checked>
+                    <input v-else type="radio" id="location" name="sortby" value="location" @change="onSortChange('location')">
+                    <label for="locatoin">Locatoin</label><br>
+                    <input v-if="sortBy.includes('price')" type="radio" id="price" name="sortby" value="price" @change="onSortChange('price')" checked>
+                    <input v-else type="radio" id="price" name="sortby" value="price" @change="onSortChange('price')">
+                    <label for="price">Price</label><br>
+                    <input v-if="sortBy.includes('spaces')" type="radio" id="availability" name="sortby" value="spaces" @change="onSortChange('spaces')" checked>
+                    <input v-else type="radio" id="availability" name="sortby" value="spaces" @change="onSortChange('spaces')">
+                    <label for="availability">Availability</label><br>
+                    <br>
+                    <input v-if="ascending" type="radio" id="ascending" name="ascdes" :value="ascending" @change="ascChange(true)" checked>
+                    <input v-else type="radio" id="ascending" name="ascdes" :value="ascending" @change="ascChange(true)">
+                    <label for="ascending">Ascedning</label><br>
+                    <input v-if="!ascending" type="radio" id="descending" name="ascdes" :value="ascending" @change="ascChange(false)" checked>
+                    <input v-else type="radio" id="descending" name="ascdes" :value="ascending" @change="ascChange(false)">
+                    <label for="descending">Descending</label><br>
+                </div>
+            </div>
+            <div class="lessons">
+                <div v-for="lesson in sortLessons" :key="lesson.id" class="lesson">
+                    <div class="lesson-content">
+                        <h2>Subject: {{ lesson.subject }}</h2>
+                        <h2>Loacation: {{ lesson.location }}</h2>
+                        <h2>Price: <i class="fas fa-pound-sign"></i> {{ lesson.price }}</h2>
+                        <h2>Spaces: {{ lesson.spaces }}</h2>
+                        <button v-if="isLessonFull(lesson)" type="button" @click="addLessonToCart(lesson)" disabled>Add to caret</button>
+                        <button v-else type="button" @click="addLessonToCart(lesson)">Add to caret</button>
+                    </div>
+                    <div class="lesson-img">
+                        <img :src="lesson.img" :alt="lesson.subject">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a v-if="!isCaretEmpty()" href="./caret.html"><h1>move to checkout</h1></a>
+            <a v-else href="#"><h1>move to checkout</h1></a>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./javascript.js"></script>
+</body>
+</html>
