@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Vue app</title>
+</head>
+<body>
+    <div id="App">
+        <div class="main-content-caret">
+            <div>
+                <a href="./index.html"><h1>Home</h1></a>
+            </div>
+            <div class="lessons">
+                <div v-for="lesson in caret" :key="lesson.id" class="lesson">
+                    <div class="lesson-content">
+                        <h2>Subject: {{ lesson.subject }}</h2>
+                        <h2>Loacation: {{ lesson.location }}</h2>
+                        <h2>Price: <i class="fas fa-pound-sign"></i> {{ lesson.price }}</h2>
+                        <button type="button" @click="removeLessonFromCaret(lesson)">Remove</button>
+                    </div>
+                    <div class="lesson-img">
+                        <img :src="lesson.img" :alt="lesson.subject">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <form @submit.prevent="addPersonalInfo" class="checkout-form">
+                <div>
+                    <p>Name: </p>
+                    <!-- used the @input and :value instead of v-model to be able to run a function on input for regex matching -->
+                    <input type="text" name="name" id="name" placeholder="Enter your name" :value="name" @change="editName">
+                    <p>Phone number: </p>
+                    <input type="text" name="phoneNumber" id="numer" placeholder="Enter your phone number" :value="phoneNumber" @change="editPhoneNumber">
+                </div>
+                <p v-if="submitted">Sumitted with name: {{ name }} and phone number {{ phoneNumber }}</p>
+               <button type="submit">Checkout</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./javascript.js"></script>
+</body>
+</html>
