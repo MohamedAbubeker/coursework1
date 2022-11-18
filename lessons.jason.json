@@ -1,0 +1,79 @@
+[
+    {
+    "id": 1,
+    "subject": "Math",
+    "location": "London",
+    "price": 12,
+    "spaces": 9
+    },
+    {
+    "id": 2,
+    "subject": "Science",
+    "location": "London",
+    "price": 7,
+    "spaces": 12
+    },
+    {
+    "id": 3,
+    "subject": "Geology",
+    "location": "London",
+    "price": 18,
+    "spaces": 13
+    },
+    {
+    "id": 4,
+    "subject": "Chinese",
+    "location": "London",
+    "price": 100,
+    "spaces": 3
+    },
+    {
+    "id": 5,
+    "subject": "Arabic",
+    "location": "London",
+    "price": 25,
+    "spaces": 20
+    },
+    {
+    "id": 6,
+    "subject": "Chemistry",
+    "location": "London",
+    "price": 99,
+    "spaces": 2
+    },
+    {
+    "id": 7,
+    "subject": "Philosophy",
+    "location": "London",
+    "price": 90,
+    "spaces": 17
+    },
+    {
+    "id": 8,
+    "subject": "Math",
+    "location": "London",
+    "price": 100,
+    "spaces": 5
+    },
+    {
+    "id": 9,
+    "subject": "Math",
+    "location": "London",
+    "price": 70,
+    "spaces": 9
+    },
+    {
+    "id": 10,
+    "subject": "Math",
+    "location": "London",
+    "price": 13,
+    "spaces": 5
+    },
+    {
+    "id": 11,
+    "subject": "Math",
+    "location": "London",
+    "price": 20,
+    "spaces": 5
+    }
+]
