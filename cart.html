@@ -11,6 +11,7 @@
 </head>
 <body>
     <div id="App">
+        <!--THis div will show all the lessons added to the cart-->
         <div class="main-content-cart">
             <div>
                 <a href="./index.html"><h1>Home</h1></a>
@@ -23,6 +24,7 @@
                         <h2>Price: <i class="fas fa-pound-sign"></i> {{ lesson.price }}</h2>
                         <button type="button" @click="removeLessonFromcart(lesson)">Remove</button>
                     </div>
+                    <!-- delete later-->
                     <div class="lesson-img">
                         <img :src="lesson.img" :alt="lesson.subject">
                     </div>
