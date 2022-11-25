@@ -19,28 +19,27 @@
             <div class="lessons">
                 <div v-for="lesson in cart" :key="lesson.id" class="lesson border border-primary rounded">
                     <div class="lesson-content">
-                        <h2>Subject: {{ lesson.subject }}</h2>
-                        <h2>Loacation: {{ lesson.location }}</h2>
-                        <h2>Price: <i class="fas fa-pound-sign"></i> {{ lesson.price }}</h2>
+                        <h4>Subject: {{ lesson.subject }}</h4>
+                        <h4>Loacation: {{ lesson.location }}</h4>
+                        <h4>Price: <i class="fas fa-pound-sign"></i> {{ lesson.price }}</h2>
                         <button type="button" @click="removeLessonFromcart(lesson)">Remove</button>
                     </div>
                     <!-- delete later-->
-                    <div class="lesson-img">
-                        <img :src="lesson.img" :alt="lesson.subject">
+                    <div >
+                        <img class="lesson-img" :src="lesson.url" :alt="lesson.subject" >
                     </div>
                 </div>
             </div>
         </div>
         <div>
-            <form @submit.prevent="addPersonalInfo" class="checkout-form">
+            <form @submit.prevent="checkForm" class="checkout-form">
                 <div>
                     <p>Name: </p>
                     <!-- used the @input and :value instead of v-model to be able to run a function on input for regex matching -->
-                    <input type="text" name="name" id="name" placeholder="Enter your name" :value="name" @change="editName">
+                    <input type="text" name="name" id="name" placeholder="Enter your name" v-model="name" required>
                     <p>Phone number: </p>
-                    <input type="text" name="phoneNumber" id="numer" placeholder="Enter your phone number" :value="phoneNumber" @change="editPhoneNumber">
+                    <input type="text" name="phoneNumber" id="numer" placeholder="Enter your phone number" v-model="phoneNumber" required>
                 </div>
-                <p v-if="submitted">Sumitted with name: {{ name }} and phone number {{ phoneNumber }}</p>
                <button type="submit">Checkout</button>
             </form>
         </div>

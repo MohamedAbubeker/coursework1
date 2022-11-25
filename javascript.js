@@ -2,15 +2,15 @@ const app = Vue.createApp({
     data() {
         return {
             lessons: [],
-            sortBy: localStorage.getItem("sortBy") ? localStorage.getItem("sortBy") : "price",
-            ascending: localStorage.getItem("ascending") ? localStorage.getItem("ascending") === 'true' : true,
+            sortBy: localStorage.getItem("sortBy") ? JSON.parse(localStorage.getItem("sortBy")) : "price",
+            ascending: localStorage.getItem("ascending") ? JSON.parse(localStorage.getItem("ascending")) === 'true' : true,
             cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [],
             name: "",
             phoneNumber: "",
             submitted: false
         }
     },
-    //This function will read the data from jason file 
+    //This function will read the data from json file 
     created() {
         if (!JSON.parse(localStorage.getItem("lessons"))) {
             fetch('lessons.json')
@@ -25,7 +25,26 @@ const app = Vue.createApp({
             this.lessons = JSON.parse(localStorage.getItem("lessons"));
         }
     },
-
+    watch: {
+        phoneNumber(newValue, oldValue) {
+            if (newValue === "") {  // this if statement added to avoid infinite loop as /^\d+$/ regex doesn't match the empty string
+                this.editPhoneNumber("");
+            } else if (/^\d+$/.test(newValue)) {
+                this.editPhoneNumber(newValue);
+            } else {
+                this.editPhoneNumber(oldValue)
+            }
+        },
+        name(newValue, oldValue) {
+            if (newValue === "") {
+                this.editName("");
+            } else if (/^[A-Za-z]+$/.test(newValue)) {
+                this.editName(newValue);
+            } else {
+                this.editName(oldValue)
+            }
+        }
+    },
     methods: {
         ascChange(ascending) {
             this.ascending = ascending;
@@ -38,6 +57,7 @@ const app = Vue.createApp({
                     subject: lesson.subject,
                     location: lesson.location,
                     price: lesson.price,
+                    url: lesson.url
                 });
                 let lessonIndex = this.lessons.indexOf(lesson);
                 this.lessons[lessonIndex].spaces = this.lessons[lessonIndex].spaces - 1;
@@ -70,18 +90,23 @@ const app = Vue.createApp({
             if (this.cart.length === 0) return true;
         },
 
-        editName(e) {
-            if (e.target.value.match(/^[A-Za-z]+$/)) {
-                this.name = e.target.value;
+        editName(value) {
+            this.name = value;
+        },
+
+        editPhoneNumber(value) {
+            this.phoneNumber = value;
+        },
+        checkForm(e) {
+            if (this.name && this.phoneNumber && /^[A-Za-z]+$/.test(this.name) && /^\d+$/.test(this.phoneNumber)) {
+                alert("submitted");
+            } else if (this.name && this.phoneNumber && !/^[A-Za-z]+$/.test(this.name) && /^\d+$/.test(this.phoneNumber)) {
+                alert("invalid name") 
+            } else if (this.name && this.phoneNumber && /^[A-Za-z]+$/.test(this.name) && !/^\d+$/.test(this.phoneNumber)) {
+                alert("invalid phone number") 
+            } else if (this.name && this.phoneNumber && !/^[A-Za-z]+$/.test(this.name) && !/^\d+$/.test(this.phoneNumber)) {
+                alert("invalid name & phone number") 
             }
-        },
-
-        editPhoneNumber(e) {
-            if (e.target.value.match(/^\d+$/)) this.phoneNumber = e.target.value;
-        },
-
-        addPersonalInfo(e) {
-            this.submitted = !this.submitted;
         }
     },
     computed: {
