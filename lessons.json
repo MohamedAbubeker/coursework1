@@ -9,63 +9,63 @@
     {
     "id": 2,
     "subject": "Science",
-    "location": "London",
+    "location": "Birmingham",
     "price": 7,
     "spaces": 12
     },
     {
     "id": 3,
     "subject": "Geology",
-    "location": "London",
+    "location": "Cambridge",
     "price": 18,
     "spaces": 13
     },
     {
     "id": 4,
     "subject": "Chinese",
-    "location": "London",
+    "location": "Derby",
     "price": 100,
     "spaces": 3
     },
     {
     "id": 5,
     "subject": "Arabic",
-    "location": "London",
+    "location": "Leeds",
     "price": 25,
     "spaces": 20
     },
     {
     "id": 6,
     "subject": "Chemistry",
-    "location": "London",
+    "location": "Oxford",
     "price": 99,
     "spaces": 2
     },
     {
     "id": 7,
     "subject": "Philosophy",
-    "location": "London",
+    "location": "Plymouth",
     "price": 90,
     "spaces": 17
     },
     {
     "id": 8,
     "subject": "Math",
-    "location": "London",
+    "location": "Sheffield",
     "price": 100,
     "spaces": 5
     },
     {
     "id": 9,
     "subject": "Math",
-    "location": "London",
+    "location": "Winchester",
     "price": 70,
     "spaces": 9
     },
     {
     "id": 10,
     "subject": "Math",
-    "location": "London",
+    "location": "York",
     "price": 13,
     "spaces": 5
     },
