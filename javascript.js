@@ -3,7 +3,7 @@ const app = Vue.createApp({
         return {
             lessons: [],
             sortBy: localStorage.getItem("sortBy") ? JSON.parse(localStorage.getItem("sortBy")) : "price",
-            ascending: localStorage.getItem("ascending") ? JSON.parse(localStorage.getItem("ascending")) === 'true' : true,
+            ascending: localStorage.getItem("ascending") ? JSON.parse(localStorage.getItem("ascending")) : true,
             cart: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [],
             name: "",
             phoneNumber: "",
@@ -14,7 +14,7 @@ const app = Vue.createApp({
     created() {
         if (!JSON.parse(localStorage.getItem("lessons"))) {
             fetch('lessons.json')
-                //here I convert the jason to js objects
+                //here I convert the json to js objects
                 .then((res) => res.json())
                 .then((data) => {
                     this.lessons = data;
@@ -156,5 +156,6 @@ const app = Vue.createApp({
         },
     }
 });
+
 
 app.mount("#App");
